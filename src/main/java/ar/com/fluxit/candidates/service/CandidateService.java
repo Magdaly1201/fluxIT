@@ -2,6 +2,7 @@ package ar.com.fluxit.candidates.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,22 +10,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import ar.com.fluxit.candidates.model.ICandidate;
 import ar.com.fluxit.candidates.model.dto.CandidateRequestDTO;
-import ar.com.fluxit.candidates.model.dto.CandidateResponseDTO;
-import ar.com.fluxit.candidates.model.dto.CandidateSummaryDTO;
 
 /**
  * 
  * @author mxs690
  *
  */
+@Service
 public class CandidateService implements ICandidateService {
 
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#get(int)
 	 */
 	@Override
-	public CandidateResponseDTO get(int id) {
+	public ICandidate get(int id) {
 		return null;
 	}
 	
@@ -32,7 +33,7 @@ public class CandidateService implements ICandidateService {
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#create(ar.com.fluxit.candidates.model.dto.CandidateRequestDTO)
 	 */
 	@Override
-	public CandidateResponseDTO create(CandidateRequestDTO candidate) {
+	public ICandidate create(CandidateRequestDTO candidate) {
 		return null;
 	}
 	
@@ -40,7 +41,7 @@ public class CandidateService implements ICandidateService {
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#update(int, ar.com.fluxit.candidates.model.dto.CandidateRequestDTO)
 	 */
 	@Override
-	public CandidateResponseDTO update(int id,CandidateRequestDTO candidate) {
+	public ICandidate update(int id,CandidateRequestDTO candidate) {
 		return null;
 	}
 	
@@ -48,7 +49,7 @@ public class CandidateService implements ICandidateService {
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#delete(int)
 	 */
 	@Override
-	public CandidateResponseDTO delete(int id) {
+	public ICandidate delete(int id) {
 		return null;
 	}
 	
@@ -56,7 +57,7 @@ public class CandidateService implements ICandidateService {
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#filter()
 	 */
 	@Override
-	public List<CandidateSummaryDTO> filter(){
+	public List<ICandidate> filter(){
 		return null;
 	}
 }

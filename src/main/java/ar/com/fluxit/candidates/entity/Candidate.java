@@ -1,9 +1,13 @@
 /**
  * 
  */
-package ar.com.fluxit.candidates.model;
+package ar.com.fluxit.candidates.entity;
 
 import java.time.LocalDate;
+
+import ar.com.fluxit.candidates.model.ICandidate;
+import ar.com.fluxit.candidates.model.ICandidateData;
+import ar.com.fluxit.candidates.model.ICandidateSummary;
 
 /**
  * @author mxs690

@@ -28,7 +28,6 @@ public class CandidateRequestDTO implements ICandidateData {
 	@NotEmpty(message="No puede estar vacio")
 	private String address;
 	
-	
 	@NotEmpty(message="No puede estar vacio")
 	private int numberPhone;
 	
