@@ -5,6 +5,13 @@ package ar.com.fluxit.candidates.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import ar.com.fluxit.candidates.model.ICandidate;
 import ar.com.fluxit.candidates.model.ICandidateData;
 import ar.com.fluxit.candidates.model.ICandidateSummary;
@@ -13,11 +20,17 @@ import ar.com.fluxit.candidates.model.ICandidateSummary;
  * @author mxs690
  *
  */
+@Entity
+@Table(name="candidates")
 public class Candidate implements ICandidateSummary, ICandidateData, ICandidate {
-
-	private int id;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
+	@Column(nullable=false)
 	private int documentNumber;
 	private LocalDate birthDate;
+	@Column(nullable=false)
 	private String fullName;
 	private String address;
 	private int numberPhone;
@@ -27,7 +40,7 @@ public class Candidate implements ICandidateSummary, ICandidateData, ICandidate 
 	 * @see ar.com.fluxit.candidates.model.ICandidate#getId()
 	 */
 	@Override
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	/* (non-Javadoc)

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import ar.com.fluxit.candidates.exception.CandidateNotFoundException;
 import ar.com.fluxit.candidates.model.dto.CandidateRequestDTO;
 import ar.com.fluxit.candidates.model.dto.CandidateResponseDTO;
 import ar.com.fluxit.candidates.model.dto.CandidateSummaryDTO;
@@ -30,16 +32,16 @@ public class CandidateRestController {
 	private CandidateController controller;
 	
 	@GetMapping("/candidate/{id}")
-	public CandidateResponseDTO get(@PathVariable(value="id") int id) {
+	public CandidateResponseDTO get(@PathVariable(value="id") int id) throws CandidateNotFoundException {
 		return this.controller.get(id);
 	}
 	
-	@PostMapping("/candidate/")
+	@PostMapping("/candidate")
 	public CandidateResponseDTO create(@RequestBody CandidateRequestDTO candidate) {
 		return this.controller.create(candidate);
 	}
 	
-	@PutMapping("/candidate/")
+	@PutMapping("/candidate")
 	public CandidateResponseDTO update(@PathVariable(value="id") int id, @RequestBody CandidateRequestDTO candidate) {
 		return this.controller.update(id, candidate);
 	}

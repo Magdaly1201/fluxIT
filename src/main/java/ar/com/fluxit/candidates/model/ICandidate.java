@@ -7,7 +7,7 @@ public interface ICandidate {
 	/**
 	 * @return the id
 	 */
-	int getId();
+	long getId();
 
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.model.ICandidate#getDocumentNumber()

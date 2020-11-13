@@ -10,7 +10,7 @@ import ar.com.fluxit.candidates.model.ICandidate;
  */
 public class CandidateResponseDTO implements ICandidate{
 	
-	private int id;
+	private long id;
 	private int documentNumber;
 	private LocalDate birthDate;
 	private String fullName;
@@ -22,7 +22,7 @@ public class CandidateResponseDTO implements ICandidate{
 	 * @return the id
 	 */
 	@Override
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	/**
@@ -70,7 +70,7 @@ public class CandidateResponseDTO implements ICandidate{
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	/**

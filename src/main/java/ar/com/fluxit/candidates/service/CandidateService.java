@@ -2,6 +2,8 @@ package ar.com.fluxit.candidates.service;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import ar.com.fluxit.candidates.entity.Candidate;
+import ar.com.fluxit.candidates.exception.CandidateNotFoundException;
 import ar.com.fluxit.candidates.model.ICandidate;
 import ar.com.fluxit.candidates.model.dto.CandidateRequestDTO;
+import ar.com.fluxit.candidates.repository.ICandidateRepository;
 
 /**
  * 
@@ -21,12 +26,18 @@ import ar.com.fluxit.candidates.model.dto.CandidateRequestDTO;
 @Service
 public class CandidateService implements ICandidateService {
 
+	@Autowired
+	private ICandidateRepository repository;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#get(int)
 	 */
 	@Override
-	public ICandidate get(int id) {
-		return null;
+	public ICandidate get(long id) throws CandidateNotFoundException {
+		return this.repository.findById(id).orElseThrow(()-> new CandidateNotFoundException());
 	}
 	
 	/* (non-Javadoc)
@@ -34,7 +45,8 @@ public class CandidateService implements ICandidateService {
 	 */
 	@Override
 	public ICandidate create(CandidateRequestDTO candidate) {
-		return null;
+		Candidate candidateSave =this.modelMapper.map(candidate, Candidate.class);
+		return repository.save(candidateSave);
 	}
 	
 	/* (non-Javadoc)

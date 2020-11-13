@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import ar.com.fluxit.candidates.exception.CandidateNotFoundException;
 import ar.com.fluxit.candidates.model.dto.CandidateRequestDTO;
 import ar.com.fluxit.candidates.model.dto.CandidateResponseDTO;
 import ar.com.fluxit.candidates.model.dto.CandidateSummaryDTO;
@@ -32,7 +33,7 @@ public class CandidateController {
     @Autowired
     private ModelMapper modelMapper;
     
-	public CandidateResponseDTO get(int id) {
+	public CandidateResponseDTO get(int id) throws CandidateNotFoundException {
 		return this.modelMapper.map(this.service.get(id),
 				CandidateResponseDTO.class);
 	}
