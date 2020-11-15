@@ -3,8 +3,12 @@ package ar.com.fluxit.candidates.model.dto;
 import java.time.LocalDate;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -12,12 +16,12 @@ import ar.com.fluxit.candidates.model.ICandidateData;
 
 public class CandidateRequestDTO implements ICandidateData {
 	
-	@NotEmpty(message="No puede estar vacio")
-	@Size(min=4,max=8, message="El tamaño tiene que estar entre 5 y 8")
-	private int documentNumber;
+	@NotNull
+	private Integer documentNumber;
 	
-	@NotEmpty(message="No puede estar vacio")
+	@NotNull(message="No puede estar vacio")
 	@JsonFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalDate birthDate;
 	
 	@NotEmpty(message="No puede estar vacio")
@@ -28,8 +32,8 @@ public class CandidateRequestDTO implements ICandidateData {
 	@NotEmpty(message="No puede estar vacio")
 	private String address;
 	
-	@NotEmpty(message="No puede estar vacio")
-	private int numberPhone;
+	@NotNull
+	private Integer numberPhone;
 	
 	@NotEmpty(message="No puede estar vacio")
 	@Email(message="No es una direccion de correo bien formada")
@@ -39,7 +43,7 @@ public class CandidateRequestDTO implements ICandidateData {
 	 * @return the documentNumber
 	 */
 	@Override
-	public int getDocumentNumber() {
+	public Integer getDocumentNumber() {
 		return documentNumber;
 	}
 	/**
@@ -67,7 +71,7 @@ public class CandidateRequestDTO implements ICandidateData {
 	 * @return the numberPhone
 	 */
 	@Override
-	public int getNumberPhone() {
+	public Integer getNumberPhone() {
 		return numberPhone;
 	}
 	/**
@@ -80,7 +84,7 @@ public class CandidateRequestDTO implements ICandidateData {
 	/**
 	 * @param documentNumber the documentNumber to set
 	 */
-	public void setDocumentNumber(int documentNumber) {
+	public void setDocumentNumber(Integer documentNumber) {
 		this.documentNumber = documentNumber;
 	}
 	/**
@@ -104,7 +108,7 @@ public class CandidateRequestDTO implements ICandidateData {
 	/**
 	 * @param numberPhone the numberPhone to set
 	 */
-	public void setNumberPhone(int numberPhone) {
+	public void setNumberPhone(Integer numberPhone) {
 		this.numberPhone = numberPhone;
 	}
 	/**
