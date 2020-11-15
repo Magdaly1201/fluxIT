@@ -1,6 +1,7 @@
 package ar.com.fluxit.candidates.service;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import ar.com.fluxit.candidates.exception.CandidateNotFoundException;
 import ar.com.fluxit.candidates.model.ICandidate;
@@ -12,10 +13,10 @@ public interface ICandidateService {
 
 	ICandidate create(CandidateRequestDTO candidate);
 
-	ICandidate update(int id, CandidateRequestDTO candidate);
+	ICandidate update(int id, CandidateRequestDTO candidateDTO) throws CandidateNotFoundException;
 
-	ICandidate delete(int id);
+	ICandidate delete(int id) throws CandidateNotFoundException;
 
-	List<ICandidate> filter();
+	Page<ICandidate> filter(PageRequest pageRequest, int documentNumber, String fullName);
 
 }

@@ -1,17 +1,10 @@
 package ar.com.fluxit.candidates.service;
 
-import java.util.List;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import ar.com.fluxit.candidates.entity.Candidate;
 import ar.com.fluxit.candidates.exception.CandidateNotFoundException;
 import ar.com.fluxit.candidates.model.ICandidate;
@@ -46,30 +39,38 @@ public class CandidateService implements ICandidateService {
 	@Override
 	public ICandidate create(CandidateRequestDTO candidate) {
 		Candidate candidateSave =this.modelMapper.map(candidate, Candidate.class);
-		return repository.save(candidateSave);
+		return this.repository.save(candidateSave);
 	}
 	
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#update(int, ar.com.fluxit.candidates.model.dto.CandidateRequestDTO)
 	 */
 	@Override
-	public ICandidate update(int id,CandidateRequestDTO candidate) {
-		return null;
+	public ICandidate update(int id,CandidateRequestDTO candidateDTO) throws CandidateNotFoundException {
+		ICandidate  candidateFind =(Candidate) this.get(id);
+		Candidate candidateUpdate= new Candidate();
+		this.modelMapper.map(candidateFind, candidateUpdate);
+		this.modelMapper.map(candidateDTO, candidateUpdate);
+		return this.repository.save(candidateUpdate);
 	}
 	
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#delete(int)
 	 */
 	@Override
-	public ICandidate delete(int id) {
-		return null;
+	public ICandidate delete(int id) throws CandidateNotFoundException {
+		ICandidate  candidateFind = (Candidate) this.get(id);
+		Candidate candidateDelete= new Candidate();
+		this.modelMapper.map(candidateFind, candidateDelete);
+		this.repository.delete(candidateDelete);
+		return null; 
 	}
 	
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#filter()
 	 */
 	@Override
-	public List<ICandidate> filter(){
-		return null;
+	public Page<ICandidate> filter(PageRequest pageRequest, int documentNumber, String fullName){
+		return this.repository.findAll(pageRequest).map(d->d);
 	}
 }
