@@ -4,7 +4,7 @@
 package ar.com.fluxit.candidates.exception;
 
 /**
- * @author Magdaly Santos
+ * @author Magdaly
  *
  */
 public class CandidateNotFoundException extends Exception {
