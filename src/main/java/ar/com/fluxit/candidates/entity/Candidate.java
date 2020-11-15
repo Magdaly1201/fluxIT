@@ -3,6 +3,7 @@
  */
 package ar.com.fluxit.candidates.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -22,18 +23,31 @@ import ar.com.fluxit.candidates.model.ICandidateSummary;
  */
 @Entity
 @Table(name="candidates")
-public class Candidate implements ICandidateSummary, ICandidateData, ICandidate {
+public class Candidate implements ICandidateSummary, ICandidateData, ICandidate ,Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	@Column(nullable=false)
-	private int documentNumber;
+	
+	@Column(nullable=false, name="document")
+	private Integer documentNumber;
+	
+	@Column(name="birthdate")
 	private LocalDate birthDate;
-	@Column(nullable=false)
+	
+	@Column(nullable=false,name="fullname")
 	private String fullName;
+	
 	private String address;
-	private int numberPhone;
+	
+	@Column(name="number_phone")
+	private Integer numberPhone;
+	
 	private String email;
 	
 	/* (non-Javadoc)
@@ -53,7 +67,7 @@ public class Candidate implements ICandidateSummary, ICandidateData, ICandidate 
 	 * @see ar.com.fluxit.candidates.model.ICandidate#getDocumentNumber()
 	 */
 	@Override
-	public int getDocumentNumber() {
+	public Integer getDocumentNumber() {
 		return documentNumber;
 	}
 	/* (non-Javadoc)
@@ -96,7 +110,7 @@ public class Candidate implements ICandidateSummary, ICandidateData, ICandidate 
 	 * @see ar.com.fluxit.candidates.model.ICandidate#getNumberPhone()
 	 */
 	@Override
-	public int getNumberPhone() {
+	public Integer getNumberPhone() {
 		return numberPhone;
 	}
 	/* (non-Javadoc)
@@ -118,7 +132,7 @@ public class Candidate implements ICandidateSummary, ICandidateData, ICandidate 
 	/**
 	 * @param documentNumber the documentNumber to set
 	 */
-	public void setDocumentNumber(int documentNumber) {
+	public void setDocumentNumber(Integer documentNumber) {
 		this.documentNumber = documentNumber;
 	}
 	/**
