@@ -5,7 +5,7 @@ public interface ICandidateSummary {
 	/**
 	 * @return the documentNumber
 	 */
-	int getDocumentNumber();
+	Integer getDocumentNumber();
 
 	/**
 	 * @return the fullName

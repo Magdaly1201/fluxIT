@@ -15,7 +15,7 @@ public interface ICandidate {
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.model.ICandidateData#getDocumentNumber()
 	 */
-	int getDocumentNumber();
+	Integer getDocumentNumber();
 
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.model.ICandidateData#getBirthDate()
@@ -38,7 +38,7 @@ public interface ICandidate {
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.model.ICandidateData#getNumberPhone()
 	 */
-	int getNumberPhone();
+	Integer getNumberPhone();
 
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.model.ICandidateData#getEmail()

@@ -6,14 +6,14 @@ import ar.com.fluxit.candidates.model.ICandidateSummary;
 
 public class CandidateSummaryDTO implements ICandidateSummary{
 
-	private int documentNumber;
+	private Integer documentNumber;
 	private String fullName;
 	
 	/**
 	 * @return the documentNumber
 	 */
 	@Override
-	public int getDocumentNumber() {
+	public Integer getDocumentNumber() {
 		return documentNumber;
 	}
 	/**
@@ -26,7 +26,7 @@ public class CandidateSummaryDTO implements ICandidateSummary{
 	/**
 	 * @param documentNumber the documentNumber to set
 	 */
-	public void setDocumentNumber(int documentNumber) {
+	public void setDocumentNumber(Integer documentNumber) {
 		this.documentNumber = documentNumber;
 	}
 	/**

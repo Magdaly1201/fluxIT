@@ -11,7 +11,7 @@ import ar.com.fluxit.candidates.model.ICandidate;
 public class CandidateResponseDTO implements ICandidate{
 	
 	private long id;
-	private int documentNumber;
+	private Integer documentNumber;
 	private LocalDate birthDate;
 	private String fullName;
 	private String address;
@@ -29,7 +29,7 @@ public class CandidateResponseDTO implements ICandidate{
 	 * @return the documentNumber
 	 */
 	@Override
-	public int getDocumentNumber() {
+	public Integer getDocumentNumber() {
 		return documentNumber;
 	}
 	/**
@@ -57,7 +57,7 @@ public class CandidateResponseDTO implements ICandidate{
 	 * @return the numberPhone
 	 */
 	@Override
-	public int getNumberPhone() {
+	public Integer getNumberPhone() {
 		return numberPhone;
 	}
 	/**
@@ -76,7 +76,7 @@ public class CandidateResponseDTO implements ICandidate{
 	/**
 	 * @param documentNumber the documentNumber to set
 	 */
-	public void setDocumentNumber(int documentNumber) {
+	public void setDocumentNumber(Integer documentNumber) {
 		this.documentNumber = documentNumber;
 	}
 	/**

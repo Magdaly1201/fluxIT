@@ -7,7 +7,7 @@ public interface ICandidateData {
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.model.ICandidate#getDocumentNumber()
 	 */
-	int getDocumentNumber();
+	Integer getDocumentNumber();
 
 	/**
 	 * @return the birthDate
@@ -27,7 +27,7 @@ public interface ICandidateData {
 	/**
 	 * @return the numberPhone
 	 */
-	int getNumberPhone();
+	Integer getNumberPhone();
 
 	/**
 	 * @return the email
