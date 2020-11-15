@@ -1,18 +1,9 @@
 package ar.com.fluxit.candidates.controller;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import ar.com.fluxit.candidates.exception.CandidateNotFoundException;
 import ar.com.fluxit.candidates.model.dto.CandidateRequestDTO;
 import ar.com.fluxit.candidates.model.dto.CandidateResponseDTO;
@@ -43,19 +34,18 @@ public class CandidateController {
 				CandidateResponseDTO.class);
 	}
 	
-	public CandidateResponseDTO update(int id, CandidateRequestDTO candidate) {
+	public CandidateResponseDTO update(int id, CandidateRequestDTO candidate) throws CandidateNotFoundException {
 		return this.modelMapper.map(this.service.update(id, candidate),
 				CandidateResponseDTO.class);
 	}
 	
-	public CandidateResponseDTO delete(int id) {
+	public CandidateResponseDTO delete(int id) throws CandidateNotFoundException {
 		return this.modelMapper.map(this.service.delete(id),
 				CandidateResponseDTO.class);
 	}
 	
-	public List<CandidateSummaryDTO> filter(){
-        return this.service.filter().stream()
-                .map(d -> this.modelMapper.map(d, CandidateSummaryDTO.class))
-                .collect(Collectors.toList());
+	public Page<CandidateSummaryDTO> filter(PageRequest pageRequest, int documentNumber, String fullName){
+        return this.service.filter(pageRequest, documentNumber, fullName)
+                .map(d -> this.modelMapper.map(d, CandidateSummaryDTO.class));
 	}
 }
