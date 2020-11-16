@@ -18,7 +18,7 @@ import ar.com.fluxit.candidates.model.ICandidateData;
 import ar.com.fluxit.candidates.model.ICandidateSummary;
 
 /**
- * @author mxs690
+ * @author Magdaly Santos
  *
  */
 @Entity
