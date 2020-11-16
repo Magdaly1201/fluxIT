@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import ar.com.fluxit.candidates.interceptor.Interceptor;
@@ -24,6 +25,13 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(defaultInterceptor()).excludePathPatterns("/error","/token");
+		registry.addInterceptor(defaultInterceptor()).excludePathPatterns("/swagger-ui.html", "/swagger-ui.html/**",
+				"/swagger-resources/**", "/webjars/springfox-swagger-ui/**", "/error", "/token");
+	}
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
 }
