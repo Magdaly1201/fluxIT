@@ -3,6 +3,7 @@ package ar.com.fluxit.candidates.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import ar.com.fluxit.candidates.interceptor.Interceptor;
@@ -20,5 +21,9 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**").allowedMethods("*").allowedOrigins("*").allowCredentials(true);
 	}
-
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(defaultInterceptor()).excludePathPatterns("/error","/token");
+	}
 }
