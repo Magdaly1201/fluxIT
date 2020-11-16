@@ -70,7 +70,10 @@ public class CandidateService implements ICandidateService {
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#filter()
 	 */
 	@Override
-	public Page<ICandidate> filter(PageRequest pageRequest, int documentNumber, String fullName){
+	public Page<ICandidate> filter(PageRequest pageRequest, Integer documentNumber, String fullName){
 		return this.repository.findAll(pageRequest).map(d->d);
+	//@Query(
+//		select * from candidsos
+//		where (documenNumber = ?1 or documentNuber is null)
 	}
 }

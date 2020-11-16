@@ -44,7 +44,7 @@ public class CandidateController {
 				CandidateResponseDTO.class);
 	}
 	
-	public Page<CandidateSummaryDTO> filter(PageRequest pageRequest, int documentNumber, String fullName){
+	public Page<CandidateSummaryDTO> filter(PageRequest pageRequest, Integer documentNumber, String fullName){
         return this.service.filter(pageRequest, documentNumber, fullName)
                 .map(d -> this.modelMapper.map(d, CandidateSummaryDTO.class));
 	}

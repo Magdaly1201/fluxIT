@@ -17,6 +17,6 @@ public interface ICandidateService {
 
 	ICandidate delete(int id) throws CandidateNotFoundException;
 
-	Page<ICandidate> filter(PageRequest pageRequest, int documentNumber, String fullName);
+	Page<ICandidate> filter(PageRequest pageRequest, Integer documentNumber, String fullName);
 
 }
