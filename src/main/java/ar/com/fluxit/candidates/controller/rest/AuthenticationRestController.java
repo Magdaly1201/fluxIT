@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import ar.com.fluxit.candidates.controller.AuthenticationController;
 import ar.com.fluxit.candidates.exception.AuthenticationFailedException;
 import ar.com.fluxit.candidates.model.jwt.UserLoginDTO;
 import constant.JwtConstants;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.Authorization;
 
 /**
  * @author Magdaly Santos

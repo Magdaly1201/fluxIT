@@ -1,7 +1,5 @@
 package ar.com.fluxit.candidates.model.dto;
 
-import java.time.LocalDate;
-
 import ar.com.fluxit.candidates.model.ICandidateSummary;
 
 public class CandidateSummaryDTO implements ICandidateSummary{

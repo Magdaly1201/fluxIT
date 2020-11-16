@@ -1,10 +1,4 @@
-/**
- * 
- */
 package ar.com.fluxit.candidates.model.dto;
-
-import java.time.LocalDateTime;
-
 
 import ar.com.fluxit.candidates.model.IUserData;
 

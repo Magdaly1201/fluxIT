@@ -8,13 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-
-import ar.com.fluxit.candidates.model.dto.CandidateRequestDTO;
-import ar.com.fluxit.candidates.model.dto.CandidateResponseDTO;
-import ar.com.fluxit.candidates.model.dto.CandidateSummaryDTO;
 import ar.com.fluxit.candidates.model.dto.UserRequestDTO;
 import ar.com.fluxit.candidates.model.dto.UserResponseDTO;
-import ar.com.fluxit.candidates.service.ICandidateService;
 import ar.com.fluxit.candidates.service.IUserService;
 
 /**

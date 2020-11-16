@@ -1,8 +1,4 @@
 package ar.com.fluxit.candidates.controller.rest;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
@@ -27,7 +23,6 @@ import ar.com.fluxit.candidates.exception.CandidateNotFoundException;
 import ar.com.fluxit.candidates.model.dto.CandidateRequestDTO;
 import ar.com.fluxit.candidates.model.dto.CandidateResponseDTO;
 import ar.com.fluxit.candidates.model.dto.CandidateSummaryDTO;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
 
