@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.com.fluxit.candidates.model.dto.CandidateResponseDTO;
+import ar.com.fluxit.candidates.exception.AuthenticationFailedException;
 import ar.com.fluxit.candidates.model.jwt.UserLoginDTO;
-import ar.com.fluxit.candidates.security.GeneratorJWT;
 import constant.JwtConstants;
 
 /**
@@ -32,7 +31,7 @@ public class AuthenticationRestController {
 
 		
 	@PostMapping
-	public ResponseEntity<?> generate(@Valid @RequestBody final UserLoginDTO login) {
+	public ResponseEntity<?> generate(@Valid @RequestBody final UserLoginDTO login) throws AuthenticationFailedException {
 		String token = authController.generator(login);
 		return new ResponseEntity<String>(JwtConstants.BEARER_TOKEN.concat(token), HttpStatus.OK);
 
