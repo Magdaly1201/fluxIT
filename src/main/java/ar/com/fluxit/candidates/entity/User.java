@@ -11,11 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import ar.com.fluxit.candidates.model.IUser;
+import ar.com.fluxit.candidates.model.IUserData;
 import ar.com.fluxit.candidates.model.dto.IUserLogin;
 
 @Entity
 @Table(name="users")
-public class User implements Serializable, IUser,IUserLogin{
+public class User implements Serializable, IUser,IUserLogin, IUserData{
 	
 	/**
 	 * 
@@ -65,6 +66,9 @@ public class User implements Serializable, IUser,IUserLogin{
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.entity.IUser#getFullName()
 	 */
+	/* (non-Javadoc)
+	 * @see ar.com.fluxit.candidates.entity.IUserData#getFullName()
+	 */
 	@Override
 	public String getFullName() {
 		return fullName;
@@ -83,6 +87,9 @@ public class User implements Serializable, IUser,IUserLogin{
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.entity.IUserLogin#getUsername()
 	 */
+	/* (non-Javadoc)
+	 * @see ar.com.fluxit.candidates.entity.IUserData#getUsername()
+	 */
 	@Override
 	public String getUsername() {
 		return username;
@@ -94,6 +101,9 @@ public class User implements Serializable, IUser,IUserLogin{
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.entity.IUserLogin#getPassword()
 	 */
+	/* (non-Javadoc)
+	 * @see ar.com.fluxit.candidates.entity.IUserData#getPassword()
+	 */
 	@Override
 	public String getPassword() {
 		return password;
@@ -102,6 +112,9 @@ public class User implements Serializable, IUser,IUserLogin{
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.entity.IUser#getRole()
 	 */
+	/* (non-Javadoc)
+	 * @see ar.com.fluxit.candidates.entity.IUserData#getRole()
+	 */
 	@Override
 	public String getRole() {
 		return role;
@@ -109,6 +122,9 @@ public class User implements Serializable, IUser,IUserLogin{
 
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.entity.IUser#getEmail()
+	 */
+	/* (non-Javadoc)
+	 * @see ar.com.fluxit.candidates.entity.IUserData#getEmail()
 	 */
 	@Override
 	public String getEmail() {
