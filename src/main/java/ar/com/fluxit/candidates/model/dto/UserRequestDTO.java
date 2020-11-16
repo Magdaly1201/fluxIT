@@ -98,5 +98,13 @@ public class UserRequestDTO implements IUserData{
 	
 	
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "UserRequestDTO [username=" + username + ", fullName=" + fullName + ", password=" + password + ", role="
+				+ role + ", email=" + email + "]";
+	}
 
 }
