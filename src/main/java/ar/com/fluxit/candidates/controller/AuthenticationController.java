@@ -25,6 +25,12 @@ public class AuthenticationController {
 	@Autowired
 	private IUserService userService;
 	
+	/**
+	 * metodo generador del jwt con {@link Login} username y password
+	 * @param login
+	 * @return String jwt 
+	 * @throws AuthenticationFailedException
+	 */
 	public String generator(UserLoginDTO login) throws AuthenticationFailedException {
 		UserJWT userJWT = this.userService.existUser(login);
 		return this.generator.generate(userJWT);

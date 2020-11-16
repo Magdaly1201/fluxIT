@@ -29,7 +29,12 @@ public class AuthenticationRestController {
 	private AuthenticationController authController;
 	
 
-		
+	/**
+	 * metodo generador del jwt con {@link Login} username y password
+	 * @param login
+	 * @return
+	 * @throws AuthenticationFailedException
+	 */
 	@PostMapping
 	public ResponseEntity<?> generate(@Valid @RequestBody final UserLoginDTO login) throws AuthenticationFailedException {
 		String token = authController.generator(login);
