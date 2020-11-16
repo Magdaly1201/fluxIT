@@ -38,7 +38,7 @@ public class CandidateService implements ICandidateService {
 	 */
 	@Override
 	public ICandidate create(CandidateRequestDTO candidate) {
-		Candidate candidateSave =this.modelMapper.map(candidate, Candidate.class);
+		Candidate candidateSave = this.modelMapper.map(candidate, Candidate.class);
 		return this.repository.save(candidateSave);
 	}
 	
@@ -71,9 +71,8 @@ public class CandidateService implements ICandidateService {
 	 */
 	@Override
 	public Page<ICandidate> filter(PageRequest pageRequest, Integer documentNumber, String fullName){
-		return this.repository.findAll(pageRequest).map(d->d);
-	//@Query(
-//		select * from candidsos
-//		where (documenNumber = ?1 or documentNuber is null)
+		Page<Candidate> page = this.repository.findAllByDocumentNumberAndFullName(documentNumber,fullName,pageRequest);
+		 Page<ICandidate> iPage =  page.map(d->d);
+		return iPage;
 	}
 }
