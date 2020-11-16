@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.com.fluxit.candidates.exception.CandidateNotFoundException;
@@ -65,6 +66,7 @@ public class CandidateRestController {
 	
 	@RolesAllowed({"ADMINISTRADOR"})
 	@GetMapping("/candidate/filter")
+	@ResponseStatus(HttpStatus.OK)
 	public Page<CandidateSummaryDTO> filter(
 			@RequestParam(value="page",defaultValue="0",required=false)int page,
 			@RequestParam(value="size",defaultValue="10", required=false)int size,
