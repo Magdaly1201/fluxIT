@@ -29,7 +29,7 @@ public class CandidateController {
      * @return
      * @throws CandidateNotFoundException
      */
-	public CandidateResponseDTO get(int id) throws CandidateNotFoundException {
+	public CandidateResponseDTO get(long id) throws CandidateNotFoundException {
 		return this.modelMapper.map(this.service.get(id),
 				CandidateResponseDTO.class);
 	}
@@ -51,7 +51,7 @@ public class CandidateController {
 	 * @return CandidateResponseDTO 
 	 * @throws CandidateNotFoundException
 	 */
-	public CandidateResponseDTO update(int id, CandidateRequestDTO candidate) throws CandidateNotFoundException {
+	public CandidateResponseDTO update(long id, CandidateRequestDTO candidate) throws CandidateNotFoundException {
 		return this.modelMapper.map(this.service.update(id, candidate),
 				CandidateResponseDTO.class);
 	}
@@ -62,7 +62,7 @@ public class CandidateController {
 	 * @return
 	 * @throws CandidateNotFoundException
 	 */
-	public CandidateResponseDTO delete(int id) throws CandidateNotFoundException {
+	public CandidateResponseDTO delete(long id) throws CandidateNotFoundException {
 		return this.modelMapper.map(this.service.delete(id),
 				CandidateResponseDTO.class);
 	}

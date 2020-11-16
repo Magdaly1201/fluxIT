@@ -46,7 +46,7 @@ public class CandidateService implements ICandidateService {
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#update(int, ar.com.fluxit.candidates.model.dto.CandidateRequestDTO)
 	 */
 	@Override
-	public ICandidate update(int id,CandidateRequestDTO candidateDTO) throws CandidateNotFoundException {
+	public ICandidate update(long id,CandidateRequestDTO candidateDTO) throws CandidateNotFoundException {
 		ICandidate  candidateFind =(Candidate) this.get(id);
 		Candidate candidateUpdate= new Candidate();
 		this.modelMapper.map(candidateFind, candidateUpdate);
@@ -58,12 +58,12 @@ public class CandidateService implements ICandidateService {
 	 * @see ar.com.fluxit.candidates.service.ICandidateService#delete(int)
 	 */
 	@Override
-	public ICandidate delete(int id) throws CandidateNotFoundException {
+	public ICandidate delete(long id) throws CandidateNotFoundException {
 		ICandidate  candidateFind = (Candidate) this.get(id);
-		Candidate candidateDelete= new Candidate();
+		Candidate candidateDelete = new Candidate();
 		this.modelMapper.map(candidateFind, candidateDelete);
 		this.repository.delete(candidateDelete);
-		return null; 
+		return candidateFind; 
 	}
 	
 	/* (non-Javadoc)

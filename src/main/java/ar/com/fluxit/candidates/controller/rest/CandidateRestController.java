@@ -47,7 +47,7 @@ public class CandidateRestController {
 			@Authorization(value = "apiKey") })
 	@GetMapping("/candidate/{id}")
 	@RolesAllowed("ROLE_CONSULTING")
-	public  ResponseEntity<?> get(@PathVariable(value="id") int id) throws CandidateNotFoundException {
+	public  ResponseEntity<?> get(@PathVariable(value="id") long id) throws CandidateNotFoundException {
 		return new ResponseEntity<CandidateResponseDTO>(this.controller.get(id), HttpStatus.OK);
 	}
 
@@ -63,8 +63,8 @@ public class CandidateRestController {
 	@ApiOperation(value = "update candidate", notes = "Required roles:ROLE_CONSULTING", authorizations = {
 			@Authorization(value = "apiKey") })
 	@RolesAllowed("ROLE_CONSULTING")
-	@PutMapping("/candidate")
-	public ResponseEntity<?> update(@PathVariable(value="id") int id, @RequestBody CandidateRequestDTO candidate) throws CandidateNotFoundException {
+	@PutMapping("/candidate/{id}")
+	public ResponseEntity<?> update(@PathVariable(value="id") long id, @RequestBody CandidateRequestDTO candidate) throws CandidateNotFoundException {
 		return new ResponseEntity<CandidateResponseDTO>(this.controller.update(id, candidate), HttpStatus.CREATED);
 	}
 	
@@ -72,7 +72,7 @@ public class CandidateRestController {
 			@Authorization(value = "apiKey") })
 	@RolesAllowed("ROLE_CONSULTING")
 	@DeleteMapping("/candidate/{id}")
-	public ResponseEntity<?> delete(@PathVariable(value="id") int id) throws CandidateNotFoundException {
+	public ResponseEntity<?> delete(@PathVariable(value="id") long id) throws CandidateNotFoundException {
 		return new ResponseEntity<CandidateResponseDTO>(this.controller.delete(id), HttpStatus.OK);
 	}
 	

@@ -13,9 +13,9 @@ public interface ICandidateService {
 
 	ICandidate create(CandidateRequestDTO candidate);
 
-	ICandidate update(int id, CandidateRequestDTO candidateDTO) throws CandidateNotFoundException;
+	ICandidate update(long id, CandidateRequestDTO candidateDTO) throws CandidateNotFoundException;
 
-	ICandidate delete(int id) throws CandidateNotFoundException;
+	ICandidate delete(long id) throws CandidateNotFoundException;
 
 	Page<ICandidate> filter(PageRequest pageRequest, Integer documentNumber, String fullName);
 
