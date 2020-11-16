@@ -23,7 +23,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.example.meetup.controller.rest"))
+				.apis(RequestHandlerSelectors.basePackage("ar.com.fluxit.candidates.controller.rest"))
 				.paths(PathSelectors.any()).build().securitySchemes(Lists.newArrayList(apiKey()));
 	}
 }
