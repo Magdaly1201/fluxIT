@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ar.com.fluxit.candidates.controller;
+package ar.com.fluxit.candidates.controller.rest;
 
 import javax.validation.Valid;
 
@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ar.com.fluxit.candidates.controller.AuthenticationController;
 import ar.com.fluxit.candidates.exception.AuthenticationFailedException;
 import ar.com.fluxit.candidates.model.jwt.UserLoginDTO;
 import constant.JwtConstants;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 
 /**
  * @author Magdaly Santos
@@ -36,6 +39,7 @@ public class AuthenticationRestController {
 	 * @throws AuthenticationFailedException
 	 */
 	@PostMapping
+	@ApiOperation(value = "Generate token JWT with usename and password", notes = "")
 	public ResponseEntity<?> generate(@Valid @RequestBody final UserLoginDTO login) throws AuthenticationFailedException {
 		String token = authController.generator(login);
 		return new ResponseEntity<String>(JwtConstants.BEARER_TOKEN.concat(token), HttpStatus.OK);

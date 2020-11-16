@@ -1,4 +1,4 @@
-package ar.com.fluxit.candidates.controller;
+package ar.com.fluxit.candidates.controller.rest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import ar.com.fluxit.candidates.controller.CandidateController;
 import ar.com.fluxit.candidates.exception.CandidateNotFoundException;
 import ar.com.fluxit.candidates.model.dto.CandidateRequestDTO;
 import ar.com.fluxit.candidates.model.dto.CandidateResponseDTO;
@@ -36,10 +37,7 @@ import io.swagger.annotations.Authorization;
  *
  */
 @RestController
-@RequestMapping("/api")
-@Api(value = "RestController Candidates",
-consumes = "application/json, application/json")
-
+@RequestMapping("/api/v1")
 public class CandidateRestController {
 
 	@Autowired
@@ -48,7 +46,7 @@ public class CandidateRestController {
 	@ApiOperation(value = "Get candidate by id", notes = "Required roles:ROLE_CONSULTING", authorizations = {
 			@Authorization(value = "apiKey") })
 	@GetMapping("/candidate/{id}")
-	@RolesAllowed({"ROLE_CONSULTING"})
+	@RolesAllowed("ROLE_CONSULTING")
 	public  ResponseEntity<?> get(@PathVariable(value="id") int id) throws CandidateNotFoundException {
 		return new ResponseEntity<CandidateResponseDTO>(this.controller.get(id), HttpStatus.OK);
 	}
@@ -56,7 +54,7 @@ public class CandidateRestController {
 	@ApiOperation(value = "create candidate", notes = "Required roles:ROLE_CONSULTING", authorizations = {
 			@Authorization(value = "apiKey") })
 	@PostMapping("/candidate")
-	@RolesAllowed({"ROLE_CONSULTING"})
+	@RolesAllowed("ROLE_CONSULTING")
 	public ResponseEntity<?> create(@Valid @RequestBody CandidateRequestDTO candidate) {
 		return new ResponseEntity<CandidateResponseDTO>(this.controller.create(candidate), HttpStatus.CREATED);
 
@@ -64,7 +62,7 @@ public class CandidateRestController {
 	
 	@ApiOperation(value = "update candidate", notes = "Required roles:ROLE_CONSULTING", authorizations = {
 			@Authorization(value = "apiKey") })
-	@RolesAllowed({"ROLE_CONSULTING"})
+	@RolesAllowed("ROLE_CONSULTING")
 	@PutMapping("/candidate")
 	public ResponseEntity<?> update(@PathVariable(value="id") int id, @RequestBody CandidateRequestDTO candidate) throws CandidateNotFoundException {
 		return new ResponseEntity<CandidateResponseDTO>(this.controller.update(id, candidate), HttpStatus.CREATED);
@@ -72,7 +70,7 @@ public class CandidateRestController {
 	
 	@ApiOperation(value = "delete candidate by id", notes = "Required roles:ROLE_CONSULTING", authorizations = {
 			@Authorization(value = "apiKey") })
-	@RolesAllowed({"ROLE_CONSULTING"})
+	@RolesAllowed("ROLE_CONSULTING")
 	@DeleteMapping("/candidate/{id}")
 	public ResponseEntity<?> delete(@PathVariable(value="id") int id) throws CandidateNotFoundException {
 		return new ResponseEntity<CandidateResponseDTO>(this.controller.delete(id), HttpStatus.OK);
@@ -81,7 +79,7 @@ public class CandidateRestController {
 	
 	@ApiOperation(value = "filter the find by documentNumber and fullname", notes = "Required roles:ROLE_CONSULTING", authorizations = {
 			@Authorization(value = "apiKey") })
-	@RolesAllowed({"ROLE_CONSULTING"})
+	@RolesAllowed("ROLE_CONSULTING")
 	@GetMapping("/candidate/filter")
 	@ResponseStatus(HttpStatus.OK)
 	public Page<CandidateSummaryDTO> filter(

@@ -1,4 +1,4 @@
-package ar.com.fluxit.candidates.controller;
+package ar.com.fluxit.candidates.controller.rest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
