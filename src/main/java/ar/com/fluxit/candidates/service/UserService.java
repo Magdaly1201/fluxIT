@@ -3,6 +3,7 @@
  */
 package ar.com.fluxit.candidates.service;
 
+import java.time.LocalDateTime;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,19 +33,16 @@ public class UserService implements IUserService {
 
 	@Override
 	public UserJWT existUser(UserLoginDTO login) throws AuthenticationFailedException {
-		//IUser userfind = repository.findByUsernameAndPassword(login.getUsername(), login.getPassword()).orElseThrow(()-> new AuthenticationFailedException());
-		
+		IUser userfind = repository.findByUsernameAndPassword(login.getUsername(), login.getPassword()).orElseThrow(()-> new AuthenticationFailedException());
 		UserJWT userJWT = new UserJWT();
-		userJWT.setId(1L);
-		userJWT.setRole("ADMINISTRADOR");
-		userJWT.setUsername("MSANTOS1");
-		//this.modelMapper.map(userfind, userJWT);
+		this.modelMapper.map(userfind, userJWT);
 		return userJWT;
 	}
 
 	@Override
 	public IUser create(UserRequestDTO userRequestDTO) {
 		User userSave = this.modelMapper.map(userRequestDTO, User.class);
+		userSave.setCreateAt(LocalDateTime.now());
 		return this.repository.save(userSave);
 	}
 
