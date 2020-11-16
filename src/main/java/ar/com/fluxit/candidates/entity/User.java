@@ -13,7 +13,11 @@ import javax.persistence.Table;
 import ar.com.fluxit.candidates.model.IUser;
 import ar.com.fluxit.candidates.model.IUserData;
 import ar.com.fluxit.candidates.model.dto.IUserLogin;
-
+/**
+ * 
+ * @author Magdaly Santos
+ *
+ */
 @Entity
 @Table(name="users")
 public class User implements Serializable, IUser,IUserLogin, IUserData{
@@ -27,10 +31,10 @@ public class User implements Serializable, IUser,IUserLogin, IUserData{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "user_name", nullable = false)
+	@Column(name = "username", nullable = false)
 	private String username;
 	
-	@Column(name = "full_name", nullable = false)
+	@Column(name = "fullname", nullable = false)
 	private String fullName;
 	
 	@Column(name = "password", nullable = false)
@@ -44,13 +48,6 @@ public class User implements Serializable, IUser,IUserLogin, IUserData{
 	
 	@Column(name = "created_at", nullable = false)
 	private LocalDateTime createAt;
-
-	/**
-	 * @return the serialversionuid
-	 */
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 	/* (non-Javadoc)
 	 * @see ar.com.fluxit.candidates.entity.IUser#getId()
@@ -121,6 +118,8 @@ public class User implements Serializable, IUser,IUserLogin, IUserData{
 	}
 
 	/* (non-Javadoc)
+	 * 
+	 * 
 	 * @see ar.com.fluxit.candidates.entity.IUser#getEmail()
 	 */
 	/* (non-Javadoc)
