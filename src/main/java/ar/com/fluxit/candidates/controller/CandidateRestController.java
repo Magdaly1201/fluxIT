@@ -3,6 +3,7 @@ package ar.com.fluxit.candidates.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,26 +39,31 @@ public class CandidateRestController {
 	private CandidateController controller;
 	
 	@GetMapping("/candidate/{id}")
+	@RolesAllowed({"ADMINISTRADOR"})
 	public  ResponseEntity<?> get(@PathVariable(value="id") int id) throws CandidateNotFoundException {
 		return new ResponseEntity<CandidateResponseDTO>(this.controller.get(id), HttpStatus.OK);
 	}
 	
 	@PostMapping("/candidate")
+	@RolesAllowed({"ADMINISTRADOR"})
 	public ResponseEntity<?> create(@Valid @RequestBody CandidateRequestDTO candidate) {
 		return new ResponseEntity<CandidateResponseDTO>(this.controller.create(candidate), HttpStatus.CREATED);
 
 	}
 	
+	@RolesAllowed({"ADMINISTRADOR"})
 	@PutMapping("/candidate")
 	public ResponseEntity<?> update(@PathVariable(value="id") int id, @RequestBody CandidateRequestDTO candidate) throws CandidateNotFoundException {
 		return new ResponseEntity<CandidateResponseDTO>(this.controller.update(id, candidate), HttpStatus.CREATED);
 	}
 	
+	@RolesAllowed({"ADMINISTRADOR"})
 	@DeleteMapping("/candidate/{id}")
 	public ResponseEntity<?> delete(@PathVariable(value="id") int id) throws CandidateNotFoundException {
 		return new ResponseEntity<CandidateResponseDTO>(this.controller.delete(id), HttpStatus.OK);
 	}
 	
+	@RolesAllowed({"ADMINISTRADOR"})
 	@GetMapping("/candidate/filter")
 	public Page<CandidateSummaryDTO> filter(
 			@RequestParam(value="page",defaultValue="0",required=false)int page,
