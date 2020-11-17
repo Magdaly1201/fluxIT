@@ -8,8 +8,7 @@ import ar.com.fluxit.candidates.model.IUserData;
  */
 public class UserResponseDTO implements IUserData {
 
-private Long id;
-	
+	private Long id;
 	private String username;
 	private String fullName;
 	private String password;
