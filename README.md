@@ -7,6 +7,8 @@ url para levantar el proyecto mediante swagger ui
 
 http://localhost:8080/swagger-ui.html#/
 
+NOTA: En la carpeta resource/dump se encuentra los dump con algunos datos cargados para pruebas, lo ideal es crear la bd "bd_candidates" y exportar estos scripts.
+
 el api cuenta con tres RestController
 
 	-Authentication Rest Controller : el unico metodo que tiene, funciona como login el cual valida el usuario y devuelve un token JWT para autenticarse en todos los futuros request 
