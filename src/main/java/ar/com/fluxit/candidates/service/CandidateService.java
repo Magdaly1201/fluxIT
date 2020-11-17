@@ -71,8 +71,6 @@ public class CandidateService implements ICandidateService {
 	 */
 	@Override
 	public Page<ICandidate> filter(PageRequest pageRequest, Integer documentNumber, String fullName){
-		Page<Candidate> page = this.repository.findAllByDocumentNumberAndFullName(documentNumber,fullName,pageRequest);
-		 Page<ICandidate> iPage =  page.map(d->d);
-		return iPage;
+		return  this.repository.findAllByDocumentFullname(documentNumber,fullName,pageRequest).map(d->d);
 	}
 }
