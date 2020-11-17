@@ -3,6 +3,9 @@
  */
 package ar.com.fluxit.candidates.model.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+
 import ar.com.fluxit.candidates.model.IUserData;
 
 /**
@@ -11,14 +14,20 @@ import ar.com.fluxit.candidates.model.IUserData;
  */
 public class UserRequestDTO implements IUserData{
 	
+	@NotNull(message="No puede estar vacio")
 	private String username;
 	
+	@NotNull(message="No puede estar vacio")
 	private String fullName;
 	
+	@NotNull(message="No puede estar vacio")
 	private String password;
 	
+	@NotNull(message="No puede estar vacio")
 	private String role;
 	
+	@Email(message="No es una direccion de correo bien formada")
+	@NotNull(message="No puede estar vacio")
 	private String email;
 
 	/**
