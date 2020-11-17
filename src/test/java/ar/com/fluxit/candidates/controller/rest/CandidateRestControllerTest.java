@@ -55,7 +55,7 @@ public class CandidateRestControllerTest {
 		mockMvc.perform(
 				MockMvcRequestBuilders.get(ENDPOINT_CANDIDATE, candidateDTO.getId()).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andExpect((jsonPath("$.id").value(candidateDTO.getId())))
-				.andExpect((jsonPath("$.fullname").value(candidateDTO.getFullName())));
+				.andExpect((jsonPath("$.fullName").value(candidateDTO.getFullName())));
 
 	}
 
