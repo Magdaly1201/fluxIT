@@ -19,8 +19,8 @@ import ar.com.fluxit.candidates.entity.Candidate;
  */
 public interface ICandidateRepository extends JpaRepository<Candidate,Long>{ 
 
-	@Query("select c From Candidate c where c.documentNumber=?0 ")
-	public Page<Candidate> findAllByDocumentNumberAndFullName(Integer documentNumber,String fullName,Pageable pageable);
+	@Query("select c From Candidate c where (c.documentNumber=?1 or ?1 is null) and ( c.fullName=?2 or ?2 is null)")
+	public Page<Candidate> findAllByDocumentFullname(Integer documentNumber, String fullName, Pageable pageable);
 
 	
 }
