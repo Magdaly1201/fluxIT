@@ -40,6 +40,7 @@ NOTA : Para crear usuario hay que tomar en cuenta que en los ROLES: solo acepta 
 	-Java Validation
 	-RestTemplate
 	-Swagger 
+	-Junit + Mockito
 	
 #POSIBLES MEJORAS
 
@@ -50,5 +51,6 @@ NOTA : Para crear usuario hay que tomar en cuenta que en los ROLES: solo acepta 
 	-agregar metodos de get by id en el UserRestController y algunos otros necesarios.
 	-colocar las properties de conexion con la bd en variables de entorno del equipo.
 	-agregar mas logger en toda la api asi saber todo el recorrido del usuario.
+	-crear todos los test de junir para todas las clases para cumplir con el coverage 
 	
 	
