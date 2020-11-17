@@ -45,8 +45,8 @@ public class UserRestController {
 
 	}
 	
-	@RolesAllowed("ROLE_ADMIN")
 	@GetMapping("/users")
+	@RolesAllowed("ROLE_ADMIN")
 	@ResponseStatus(HttpStatus.OK)
 	@ApiOperation(value = "List all user", notes = "Required roles:ROLE_ADMIN", authorizations = {
 			@Authorization(value = "apiKey") })
